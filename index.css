@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dedede;
+}
+
+.outer-clock {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  background: #ffffff;
+  box-shadow: inset 0 0 5px #808080;
+  border: 14px solid #101010;
+}
+
+.outer-clock::before,
+.outer-clock::after,
+.marker {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  background: #101010;
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+}
+
+.outer-clock::after {
+  transform: rotate(90deg);
+}
+
+.marker {
+  background: #909090;
+}
+
+.one-seven {
+  transform: rotate(30deg);
+}
+
+.two-eight {
+  transform: rotate(60deg);
+}
+
+.four-ten {
+  transform: rotate(120deg);
+}
+
+.five-eleven {
+  transform: rotate(150deg);
+}
+
+.inner-clock {
+  position: relative;
+  top: 5%;
+  left: 5%;
+  background: #ffffff;
+  width: 90%;
+  height: 90%;
+  border-radius: 100%;
+  z-index: 1;
+}
+
+.inner-clock::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  margin-top: -8px;
+  border-radius: 100%;
+  background: #111111;
+  z-index: 1;
+}
+
+.inner-clock::after {
+  content: "Clock";
+  position: absolute;
+  top: 80%;
+  width: 100%;
+  text-align: center;
+  color: #909090;
+}
+
+.hand {
+  position: absolute;
+  width: 6px;
+  height: 30%;
+  top: 20%;
+  left: 50%;
+  border-radius: 50% 50% 0 0;
+  background: #101010;
+  transform-origin: bottom;
+  z-index: 1;
+}
+
+.hour {
+  margin-left: -3px;
+  animation: clock 86400s infinite steps(60);
+}
+
+.minute {
+  width: 4px;
+  height: 40%;
+  top: 10%;
+  margin-left: -2px;
+  animation: clock 3600s infinite steps(60);
+}
+
+.second {
+  width: 2px;
+  top: 0;
+  height: 50%;
+  margin-left: -1px;
+  background: #ff0000;
+  border-radius: unset;
+  box-shadow: 0 0 2px #808080;
+  animation: clock 60s infinite steps(60);
+}
+
+.wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes clock {
+  100% {
+    transform: rotate(360deg);
+  }
+}
